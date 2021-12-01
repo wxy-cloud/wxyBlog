@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>相册展示-个人博客</title>
+<meta name="keywords" content="个人博客" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="css/index.css"/>
+<link rel="stylesheet" href="css/style.css"/>
+<script type="text/javascript" src="js/jquery1.42.min.js"></script>
+<script type="text/javascript" src="js/waterfall.js" ></script>
+</head>
+<body>
+    <!--header start-->
+    <div id="header">
+      <h1>个人博客</h1>
+      <p>程序员和上帝打赌要开发出更大更好傻瓜都会用的软件。而上帝却总能创造出更大更傻的傻瓜。所以，上帝总能赢。</p>
+      <div id="nav">
+        <ul>
+         <li><a href="index.html">首页</a></li>
+         <li><a href="about.html">关于我</a></li>
+         <li><a href="shuo.html">碎言碎语</a></li>
+         <li><a href="riji.html">个人日记</a></li>
+         <li><a href="xc.html">相册展示</a></li>
+         <li><a href="learn.html">学无止境</a></li>
+         <li><a href="guestbook.html">留言板</a></li>
+         <div class="clear"></div>
+        </ul>
+      </div>
+    </div>
+    <!--header end-->
+    <!--content start-->
+    <div id="content_xc">
+         <div class="weizi">
+           <div class="wz_text">当前位置：<a href="index.html">首页</a>><h1>相册展示</h1></div>
+         </div>
+         <div class="xc_content">
+          <div class="con-bg">
+              <div class="w960 mt_10">
+               <div class="w650">
+                <ul class="tips" id="wf-main" style="display:none" >
+                        <li class="wf-cld"><img src="images/picture/国家超算中心1.jpg" width="230" height="172" alt="国家超算中心" /></li>
+                        <li class="wf-cld"><img src="images/picture/国家超算中心2.jpg" height="230" width="172" alt="国家超算中心" /></li>
+                        <li class="wf-cld"><img src="images/picture/天津国家超算中心外景.jpg" width="230" height="172" alt="天津国家超算中心外景" /></li>
+                        <li class="wf-cld"><img src="images/picture/天津大学北洋大学堂.jpg" width="172" height="230" alt="天津大学北洋大学堂" /></li>
+                        <li class="wf-cld"><img src="images/picture/世纪之钟.jpg" width="172" height="230" alt="世纪之钟" /></li>
+                        <li class="wf-cld"><img src="images/picture/天津之眼.jpg" width="172" height="230" alt="天津之眼" /></li>
+                        <li class="wf-cld"><img src="images/picture/欧式风情区1.jpg" width="230" height="172" alt="欧式风情区" /></li>
+                        <li class="wf-cld"><img src="images/picture/欧式风情区2.jpg" width="172" height="230" alt="欧式风情区" /></li>
+                        <li class="wf-cld"><img src="images/picture/欧式风情区3.jpg" width="172" height="230" alt="欧式风情区" /></li>
+                        <li class="wf-cld"><img src="images/picture/欧式风情区4.jpg" width="172" height="230" alt="欧式风情区" /></li>
+                        <li class="wf-cld"><img src="images/picture/欧式风情区5.jpg" width="172" height="230" alt="欧式风情区" /></li>
+                        <li class="wf-cld"><img src="images/picture/盘山1.jpg"  width="230" height="172" alt="盘山" /></li>
+                        <li class="wf-cld"><img src="images/picture/盘山2.jpg" width="172" height="230" alt="盘山" /></li>
+                        <li class="wf-cld"><img src="images/picture/盘山3.jpg" width="230" height="172" alt="盘山" /></li>
+                        <li class="wf-cld"><img src="images/picture/盘山4.jpg" width="172" height="230" alt="盘山" /></li>
+                        <li class="wf-cld"><img src="images/picture/盘山5.jpg" width="172" height="230" alt="盘山" /></li>
+                        <li class="wf-cld"><img src="images/picture/盘山6.jpg" width="230" height="172" alt="盘山" /></li>
+                        <li class="wf-cld"><img src="images/picture/清东陵.jpg"  width="230" height="172" alt="清东陵" /></li>
+                        <li class="wf-cld"><img src="images/picture/喷泉.jpg" width="230" height="172" alt="喷泉" /></li>
+                        <li class="wf-cld"><img src="images/picture/天津水上公园1.jpg"  width="230" height="172" alt="天津水上公园" /></li>
+                        <li class="wf-cld"><img src="images/picture/天津水上公园2.jpg"  width="230" height="172" alt="天津水上公园" /></li>
+                    </ul>
+               </div>
+             </div>
+           </div>
+         </div>
+    </div>
+    <!--content end-->
+  <!--footer-->
+    <div id="footer">
+     <p>Design by:王晓勇 2021-12-08</p>
+    </div>
+    <!--footer end-->
+    <script type="text/javascript">jQuery(".lanmubox").slide({easing:"easeOutBounce",delayTime:400});</script>
+    <script  type="text/javascript" src="js/nav.js"></script>
+     <script>
+    var timer, m = 0, m1 = $("img[rel='lazy']").length;
+    function fade() {
+        $("img[rel='lazy']").each(function () {
+            var $scroTop = $(this).offset();
+            if ($scroTop.top <= $(window).scrollTop() + $(window).height()) {
+                $(this).hide();
+                $(this).attr("src", $(this).attr("lazy_src"));
+                $(this).attr("top", $scroTop.top);
+                $(this).removeAttr("rel");
+                $(this).removeAttr("lazy_src");
+                $(this).fadeIn(600);
+                var _left = $(this).parent().parent().attr("_left");
+                if (_left !== undefined)
+                    $(this).parent().parent().animate({ left: _left }, 400);
+                m++;
+            }
+        });
+        if (m < m1) { timer = window.setTimeout(fade, 300); }
+        else { window.clearTimeout(timer); }
+    }
+    $(function () {
+        $("#wf-main img[rel='lazy']").each(function (i) {
+            var _left = $(this).parent().parent().css("left").replace("px", "");
+            $(this).parent().parent().attr("_left", _left);
+            $(this).parent().parent().css("left", 0);
+        });
+        fade();
+    });
+    $(".loading").hide();
+    $("#wf-main").show();
+</script>
+</body>
+</html>

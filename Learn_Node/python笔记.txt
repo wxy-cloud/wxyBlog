@@ -1,0 +1,331 @@
+一、python基础
+1. python数据类型有数字型，字符串型（string），列表（list），元组（tuple），字典（dict），集合（set），空类型（None），布尔类型（bool）。数字型分为整型（int），浮点型（float）。
+2. 数据类型中数字型，字符串型，元组是不可变数据类型，列表、字典、集合为可变数据类型。
+3. python内置函数
+    type(obj)，返回obj的类型
+    isinstance(obj,type)，判断obj是否是type类型的变量，obj是要判断的变量，type是对象类型返回bool值。
+    id(obj)，返回obj的内存地址
+    len(obj)，返回obj的长度，无法obj不能是数字类型。返回int类型。
+    max(obj)，返回obj中的最大值，obj可以是str，list，tuple，dict。中文符号>字母>数字>英文符号。中文用拼音首字母排列
+    min(obj)，返回obj中的最小值。
+    del(obj)，删除obj这个变量。没有返回值。若删除的是列表中的元素，若索引不存在则会报错。
+    成员运算符 in 和not in ，判断 in 左边的项是否包含在 in 右边的项中，返回bool值。在字典中只能用于判断key是否存在。
+    sorted(iterable[,key=None][,reverse=False])，对可迭代类型对象进行排序。iterable是要进行排序的可迭代类型对象，key是用于自定义排序规则，可省略，reverse是指定升序（False，默认），降序（True）。返回一个新的排好序的列表。
+    range([start,]stop[,step=1])，返回一个一定范围的可迭代对象，元素为整型，他不是列表，无法打印信息，但可循环。start是开始的数字，类似于索引的左边，默认为0，可省略；stop是结束的数字，类似于索引的右边；step是步长，类似于索引中的第三个参数，默认为1，可省略。返回一个可迭代以整型为主的对象。
+    dir(obj)，返回obj所有可使用的方法和属性，返回一个列表，每一个元素是一个属性或方法。
+    比较运算符 is 和 not is ，判断两个对象存储单元是否相同，也就是判断id的值是否相同，返回bool值。
+4. 布尔类型只有两个值True(非0)和False(0)。
+5. 空类属于 False。
+6. 列表是一种有序，且内容可重复的集合类型，不限长度，耗费资源较多；元组是一种有序的，且元素可重复的集合。
+7. 字典是有多个键（key）及其对应的值（value）所组成的一种数据类型，key不可变，所以仅支持不可变的数据类型，不支持列表，key在一个字典中是唯一的；value支持所有python的数据类型。字典也是一种有序的数据类型（在python3.7之后）。
+8. 字符串的内置函数：
+    str.capitalize()，将str的首字母大写，其他字母小写。返回一个新的字符串，没有参数。
+    str.lower()和str.casefold()，将str的所有字母小写，返回一个新的字符串，没有参数。casefold是python3.3引入的，使用的返回更广，对小语种也有效。
+    str.upper()，将str的所有字母大写，于lower()相反。返回一个新的字符串，没有参数。
+    str.swapcase()，将字符串中大小写字母进行转换，大写变小写，小写变大写。返回一个型字符串，没有参数。
+    str.zfill(width)，为str定义长度，如不满足，缺少的部分用0在字符串左边填补。返回一个新字符串，width是新字符串的长度。原字符串长度小于等于width则返回原字符串。
+    str.count(item)，返回当前字符串中item的个数，item是字符串中的成员或元素。返回int类型，若item不存在则返回0。
+    str.startswith(item)，判断str开始是否为item，item是字符串中的成员或元素，返回bool值。
+    str.endswith(item)，判断str结尾是否为item，item是字符串中的成员或元素，返回bool值。
+    str.find(item,[start],[end]))，返回item在str中第一次出现的索引值，item是你想查询的元素；start是开始查询的位置，默认为0，可省略；end是结束查询的位置，默认为str的长度，可省略。返回int类型。如果在str中找不到item，则返回-1。find函数只能在字符串中使用。
+    str.index(item)，返回item在str中第一次出现的索引值。如果在str中找不到item，则会导致程序错误，其他与str.find(item)一致。也可以在列表和元组中使用。
+    str.strip([item])，去掉str左右两侧的item，默认item为空格，可省略。返回一个新的字符串。
+    str.lstrip([item])和str.rstrip([item])，去掉str左边的item和去掉str右边的item，其他同上。
+    str.replace(old,new,[max])，将str中的old（旧元素）替换成new（新元素），并能指定替换的数量，old是被替换的元素，new是替换old的新元素，new是代表替换几个old元素，默认全部替换全部匹配的old元素，可省略。返回一个新的字符串。
+    str.split([sep=None][,maxsplit=-1])，将字符串以一定的规则切割成列表。sep是切割的规则符号，默认是空格，可省略，若字符串无sep则不分割，直接生成的列表。maxsplit是切割的次数，默认是-1无限制，可省略。返回切割完的列表，返回值是列表类型。
+    str.join(iterable)，将可迭代类型对象以一定的规则转成字符串。str是链接列表中各个元素的符号，str可以是空字符串，iterable是要转换成字符串的可迭代类型对象，该对象中元素只能是字符串类型，返回一个字符串。
+    str.encode(encoding='utf-8',errors='strict')，将字符串转换成比特类型。encoding是转换成的编码格式，默认是utf-8，可省略，errors是出错时的处理方式，默认是strict，可省略，strict是直接抛出错误，也可以选择ignore，忽略错误。返回一个比特类型。
+    btyes.decode(encoding=utf-8,errors=strict)，将比特类型转换成字符串类型，返回一个字符串类型。参数与encode相同。
+    str.isspace()，判断字符串是否是由空格组成的字符串，没有参数，返回bool值。
+    str.istitle()，判断字符串是否是一个标题，没有参数，返回bool值。标题是首字母大写的字符串。这个函数只用于英文。
+    str.isupper()，判读字符串中的字母是否都是大写，没有参数，返回bool值。仅判断英文字符，其他字符不影响结果。没有英文会返回False。
+    str.islower()，判断字符串中的字母是否都是小写，没有参数，返回bool值。仅判断英文字符，其他字符不影响结果。没有英文会返回True。
+9. 字符串的格式化：
+    (1). 字符串格式化使用操作符%来实现:
+    eg：'my name is %s , my age is %s .' % ('wxy', 22)
+    其中‘my name is %s , my age is %s .’是格式化字符串。
+    格式化字符串与格式符变量之间用一个%连接，%两边有一个空格。
+    变量与格式符按顺序一一对应，数量保持一致，超过一个格式化变量用括号包裹。
+    	符号	说明
+    	%s	格式化字符串，通用类型
+    	%d	格式化整型
+    	%f	格式化浮点型
+    	%u	格式化无符号整型（正整型）
+    	%c	格式化字符
+    	%o	格式化无符号八进制数
+    	%x	格式化无符号十六进制数
+    	%e	科学计数法格式化浮点数
+    (2). str.format()函数实现格式化字符串
+    eg：'my name is {0}, my age is {1}. '.format('wxy',22)
+    使用format的字符串主体使用{}大括号替代格式符，{}中的字符进行格式控制。
+    {}中的语法为{[位置]:[对齐方式][有无符号][#][宽度][.保留小数位数][占位符类型]}
+    format函数中的参数位置决定位置
+    对齐方式：<    数据左对齐，>    数据右对齐，    ^    数据居中，与宽度一起使用
+    有无符号：+         正数前加正号，负数前加负号，
+	     -         正数前不加正号，负数前加负号，
+	     空格    正数前加空格，负数前加负号，
+    #     对二进制数，八进制数和十六进制数，使用此参数，各进制数前会分别显示 0b、0o、0x前缀；反之则不显示前缀。
+    宽度：指定输出数据时所占的宽度。
+    .保留小数位数：指定保留的小数位数。
+    占位符类型：指定输出数据的具体类型。
+	s	对字符串类型格式化。
+	d	十进制整数。
+	c	将十进制整数自动转换成对应的 Unicode 字符。
+	e 或 E 	转换成科学计数法后，再格式化输出。
+	g 或 G	自动在 e 和 f（或 E 和 F）中切换。
+	b	将十进制数自动转换成二进制表示，再格式化输出。
+	o	将十进制数自动转换成八进制表示，再格式化输出。
+	x 或 X	将十进制数自动转换成十六进制表示，再格式化输出。
+	f 或 F	转换为浮点数（默认小数点后保留 6 位），再格式化输出。
+	%	显示百分比（默认显示小数点后 6 位）。
+    (3). 提前定义要进行格式化的变量，在字符串前加 f 符号，然后在需要格式化的位置使用{变量名}。（python3.6之后引入）
+    eg：name = 'wxy'
+           age = 22
+           f'my name is {name}, my age is {age}.
+10. 转义字符
+	转义字符	说明
+	\n	换行符，将光标位置移到下一行开头。
+	\r	回车符，将光标位置移到本行开头。
+	\t	水平制表符，也即 Tab 键，一般相当于四个空格。
+	\a	蜂鸣器响铃。注意不是喇叭发声，现在的计算机很多都不带蜂鸣器了，所以响铃不一定有效。
+	\b	退格（Backspace），将光标位置移到前一列。
+	\\	反斜线
+	\'	单引号
+	\"	双引号
+	\	在字符串行尾的续行符，即一行未完，转到下一行继续写。
+    在字符串前加上 r ，可以让转义字符无效化，常用于目录类型的字符串中。
+    在字符串前加上 b，可以让字符串转换为比特类型。
+11. 列表的内置函数
+     list.append(new_item)，将new_item添加到list中，new_list是添加进列表的新元素，没有返回值，更改的是原有列表。新添加的元素只会添加在末尾。
+    list.insert(index,new_item)，将new_item添加到index的位置中，index新的元素要放的位置（数字），new_item是要添加的元素。没有返回值，更改的是原有列表。若index超出list的范围，则添加到末尾。
+    list.count(item)，返回当前列表item的个数，item是要查询的元素，返回int类型。若list中没有item，则返回0。列表只会检查完整的元素是否存在计算的内容。这个函数元组同样适用。
+    list.remove(item)，删除列表中的item元素，item是准备删除的元素。没有返回值，更改的是原有列表。若list中有多个item则只会删除第一个item，若list中没有item则程序会报错。
+    list.reverse()，对当前列表顺序进行反转，没有参数，没有返回值。
+    list.sort([key=None],[reverse=False])，对当前列表按照一定的规律进行排序。key是参数比较，可省略，reverse是排序规则，reverse=True为降序，reverse=False为升序（默认）可省略。使用sort函数的前提是，列表中的元素类型是一致的，否则无法排序，会报错。
+    list.clear()，删除list中的所有参数，没有参数，无返回值。
+    list.copy()，将当前的列表复制一份相同的列表，新列表于旧列表内容相同，但内存地址不同。没有参数，返回一个和list元素相同的列表。copy属于浅拷贝。
+    list.extend(iterable)，将其他列表或元组中的元素导入到当前列表中，iterable是可迭代类型，没有返回值，更改的是原有列表。若iterable为字符串则把字符串拆成字符导入列表中，若iterable为字典，则只会把key导入到列表中。
+    list.pop(index)，删除list的索引是index的值，并返回索引是index的值。若index不存在，则报错。返回值的类型由列表中元素的类型决定。也可以使用del对列表中元素进行删除，但没有返回值。
+    list.index(item)，获取str中item的第一个索引值，返回值是int类型。若str中不存在item则会报错。
+12. 索引和切片
+     索引可以选取列表中的某个元素，list[num]，num是索引值，索引可以对列表中的值进行修改，eg：list[2]='wxy'。但不能对超出列表索引范围的索引进行修改，也就是说不能对列表进行添加。
+     切片可以截取列表中的多个元素，list[[start]:[end]:[step]]，start和end是开始和结束的索引值，截取的范围 包含start，不包含end，可以都为省略，start默认为0，end默认为len(list)也就是list的长度，可以为负数，负数是从右进行索引，step是步长，可以理解为等差数列中的差默认为1，可省略。特殊用法：list[::-1]是对列表list进行反转，与list.reverse()功能相同。切片也可以对列表中的值进行修改，但截取的值的数量要与赋值的数量要相同。
+     因为元组是不可修改的，所以索引和切片都无法修改元组中的值。
+13. 字典没有索引，字典通过key对value进行添加和修改。eg：dict['name'] = 'wxy'。也可以使用[]对变量赋值，eg：name = dict['name']，若字典中不存在key‘name’则会报错。
+14. 字典的内置函数
+     dict.update(new_dict)，添加新的字典，如果新字典中有与原字典相同的key，则该key的value会覆盖字典中的value。new_dict是要添加到dict中的新字典。无返回值，更改的是原有字典。
+     dict.setdefault(key,value)，获取key对应的value，如果key不存在于dict中，将会添加key并将value设为默认值。key是需要获取的key，value是如果key不存在，对应这个key 存入字典中，如果key存在则value参数被忽略。返回key对应的value值，返回类型由value的类型决定。
+     dict.keys()，返回一个key集合成的伪列表，没有参数，伪列表没有列表的任何功能，但可以用list()函数转换成列表。
+     dict.values()，返回一个value集合成的伪列表，没有参数。 
+     dict.items()，将字典转换成伪列表，每个成员用元组包裹，元组有key和value两个成员。没有参数，返回一个伪列表。
+     dict.get(key,[default=None])，返回key所对应的value值，key是想要获取的value对应的key，default是key不存在时返回的值，默认的None，可省略。返回值类型由value确定。
+     dict.clear()，清空dict中的所有数据，没有参数，没有返回值，清空的是原有字典。
+     dict.pop(key)，删除字典中指定的key，并将其结果返回，如果key不存在则会报错。key是希望删除的键，返回值是key所对应的value。类型有value决定。
+    dict.copy()，将当前字典复制给一个新的字典，返回一个新的字典，但内存地址不同。
+    dict.popitem()，删除当前字典末尾一组键值对并将其返回，没有参数，返回被删除的键值对，返回值类型是元组，0索引是key，1索引是value。若字典为空，则会报错。
+15. 各种属于类型与布尔类型的关系
+	数据类型	True		False
+	int	非0		0
+	float	非0.0		0.0
+	str	len(str)!=0	len(str)==0即 ''
+	list	len(list)!=0	len(str)==0即 []
+	tuple	len(tuple)!=0	len(tuple)==0即 ()
+	dict	len(dict)!=0	len(dict)==0即 {}
+	None	not None		None
+16. 集合
+      集合（set）是一种无序的不重复元素序列，因此集合是没有索引的，常用来对两个列表进行交集、并集、差集的处理，集合支持所有不可变得数据类型，用{}包裹。
+      集合无法通过索引获取元素，集合无获取元素的任何方法，集合只是用来处理列表或元组的一种临时类型，他不适合存储和传输数据。
+      集合的创建方法，set_01 = set(['w', 'x', 'y'])，set_02 = {1, 2, 3}，set_03=set()。
+17. 集合的内置函数
+      set.add(item)，向set中添加item，item是要添加到集合中的元素，若set中已存在item则原集合不变，无返回值，在原集合中更改。
+      set.update(iterable)，加入一个新的集合（或列表、元组、字符串），如新集合内的元素在原集合中存在则无视。iterable是可迭代数据类型，无返回值，直接作用于原集合。
+     set.remove(item)，将集合中的item删除，如果元素不存在则会报错。item是要删除的set中的元素，无返回值，直接作用于原集合。
+     set.clear()，清空set中的元素，没有参数，直接作用于原集合。
+     a_set.difference(b_set)，返回集合的差集，即返回集合元素包含在第一个集合中，打不包含在第二个集合（方法的参数）中。b_set是当前集合要对比的集合，返回值是原始集合于对比集合的差集，返回值为集合。
+     a_set.intersection(b_set...)，返回两个或多个集合中都包含的元素，即交集。b_set...是与a_set对比的1个或多个集合。返回值原始集合与对比集合的交集，返回值是集合类型。
+     a_set.union(iterable...)，返回多个集合的并集，即包含了所有集合的元素，重复的元素只会出现一次。b_set...是与当前集合对比的1个或多个可迭代类型对象，返回值是原始集合与对比对象的并集。返回值集合类型。
+     a_set.isdisjoint(b_set)，判断两个集合是否包含相同的元素，如果包含相同的元素返回False，如果没有返回True，b_set是与当前集合用来判断的集合，返回bool值。
+18. 逻辑判断和逻辑语句
+      逻辑语句是由条件语句和业务语句组合而成。
+      if语句，判断一个命题的真实性，如果命题为真则执行if的逻辑语句。
+      if bool_result：		#语句块
+          do			#业务代码块
+      elif other_bool_result:	# 当bool_result不满足时，执行other_bool_result判断。可以有多个elif。
+          elifdo
+      else：			# 当不满足之前的所有条件时，执行兜底代码。
+          elsedo
+      参数：bool_result是判断结果的真假，bool类型；do是bool_result为True时执行的代码。
+19. 循环语句中的for循环
+      for item in iterable:	#for循环语法块
+          do			#每次循环要遍历的代码块
+      else:		# else只会在for循环正常结束后才会执行，执行break就不会进入else中。
+          elsedo
+      参数：iterable是可迭代数据类型，用于循环；item是iterable中的每一个元素，若iterable中的每个元素还是一个可迭代对象时，需要同时定义多个item。
+      for循环语句，没有返回值，但是在特定情况下回有返回值。
+20. while循环
+      以一定条件为基础进行循环，条件满足则无限循环，条件不满足退出循环。
+      while bool_result:
+          do
+      参数：bool_result，布尔类型，此处与if语法相同，do是while循环体的代码块。
+21. python中的函数
+      函数是将一件事情的步骤封装在一起并得到最终结果。函数名代表了这个函数要做的事情，函数体是实现了函数功能的流程。使用关键字def 定义函数。
+      def name(args...):	# name是函数名，args...试试函数的参数，参数可以没有也可以有多个
+          todo something
+      return			#函数的返回值通过关键字return实现，函数可以没有返回值。
+22. 函数参数
+      必传参数：函数中定义的参数没有默认值，在调用函数时如果不传入则报错。在定义函数的时候参数后边没有等号与默认值。
+      默认参数：也叫非必传参数，在定义函数的时候，定义的参数含有默认值，通过赋值语句给他一个默认的值。
+      可变参数：无固定的参数名和数量（不知道要传的参数名具体是什么）
+      def add(*args,**kwargs):
+      参数：*args代表，将无参数的值合并成元组，**kwargs代表将有参数与默认值的赋值语句合并成字典。
+      参数的定义从左到右依次是必传参数，默认参数，可变元组参数，可变字典参数。
+23. 函数参数类型的定义
+     def person(name:str,age:int=20):
+     函数参数类型定义方法：参数名+冒号+类型函数[+等号+默认值]（python3.7之后可用）
+     函数不会对参数类型进行验证，只是提示作用。
+24. 全局变量与局部变量
+      在python脚本最上层代码块的变量是全局变量，全局变量可以在函数内部读取但不能修改。
+      在函数内部定义的变量是局部变量，局部变量只能在函数内使用，当局部变量和全局变量同时存在时，局部变量优先。
+       关键字：global，在函数内使用global name 可以定义全局变量。global仅支持字符串，数字，空类型，布尔类型的声明。列表，元组，字典等不需要global进行声明。
+25. 匿名函数lambda
+      lambda函数是用于定义一个轻量化的函数，即用即删除，很适合需要完成一项功能，但是此功能只在此一处使用。
+      定义方法：
+          f = lambda : value
+          f = lambda : x,y:x*y
+
+
+
+
+
+二、python的面向对象
+利用（面向）对象（属性和方法）去进行编程的过程，自定义对象数据类型就是面向对象中的类（class）的概念。
+1. 在python 中使用class 来声明类，类的名称首字母大小，多单词情况下每个单词首字母大写。
+     class Name(object):
+         attr = something
+         def func(self):
+             do
+2. 类的参数self
+    self 是类函数中的必传参数，且必须放在第一个参数位置，self是一个对象，他代表实例化的变量自身，self 可以直接通过点来定义一个类变量。self 中的变量与含有self 参数的函数可以在类中的任意一个函数内随意调用。非函数中定义的变量在定义的时候不用self。
+3. 类的构造函数
+    def __init__(self,a):
+        self.a=a
+    用于对类的属性的定义。
+4. 对象的生命周期
+    实例化__init__ 是对象生命的开始，也就是内存中分配一个内存块。__del__ 是对象生命的结束，从内存中释放这个内存块。
+5. 私有函数和私有变量
+    无法被实例化后的对象调用的类中的函数与变量。
+    类内部可以调用私有函数和变量，只希望类内部调用使用，不希望被使用者调用。
+    定义方法：在变量或函数前添加__（两个下横线）。
+    在变量和函数前后都加两个下横线是定义内置函数和变量。
+6. python中的封装
+    将不对外的私有属性或方法通过可对外使用的函数而使用（类中定义私有的，只有类内部使用外部无法访问）
+7. 装饰器
+    装饰器也是一种函数，他可以接受函数作为参数，可以返回函数。装饰器接受一个函数，内部对其处理，然后返回一个新函数，动态的增强函数功能。
+    将c函数在a函数中执行，在a函数中可以选择执行或不执行c函数，也可以对c函数的结果进行二次加工处理。
+    装饰器的定义
+    def out(func_args):		# 外围函数
+        def inter(*args,**kwargs):		# 内嵌函数
+            return func_args(*args,**kwargs)
+        return inter			#外围函数返回内嵌函数
+    装饰器的用法
+    (1) 将被调用的函数直接作为参数传入装饰器的外围函数括弧。
+    def a(func):
+        def b(*args,**kwargs)
+            return func(*args,**kwargs)
+        return b
+
+    def c(name):
+        print(name)
+    a(c('wxy'))	#输出 wxy
+    (2) 将装饰器与被调用函数绑定在一起，使用@符号+装饰器函数放在被调用函数的上一行，被调用函数正常定义，只需要直接调用被执行函数即可。（最常用）
+    def a(func):
+        def b(*args,**kwargs)
+            return func(*args,**kwargs)
+        return b
+
+    @a
+    def c(name):
+        print(name)
+    c('wxy')
+8. 类中的装饰器
+    (1) classmethod
+         将类函数可以不经过实例化而直接被调用
+         用法：
+             @classmethod
+             def func(cls,...):	# cls 替代普通类函数中的self，变成cls，代表当前操作的是类
+                 do
+eg.
+             class Test(object):
+                 @classmethod
+                 def add(cls,a,b):
+                     return a+b
+
+             Test.add(1,2)
+
+    (2) staticmethod
+         该类函数可以不经过实例化而直接被调用，被该类装饰器调用的函数不许传递self或cls参数，且无法在该函数内调用其他类函数或类变量。
+              @staticmethod
+              def func(...):
+                  do
+eg.
+              class Test(object):
+                  @staticmethod
+                  def add(a,b):
+                      return a+b
+
+             Test.add(1,2)
+
+    (3) property
+         将类函数的执行免去括弧，类似于调用属性（变量）
+         @property
+         def func(self):
+             do
+eg.
+         class Test(object):
+             def __init__(self,name):
+                 self.name = name
+             @property
+             def call_name(self):
+                 return 'hello {}'.format(self.name)
+
+        test = Test('wxy')
+        result = test.call_name
+        print(result)
+        property的修改，使用@name.setter装饰器，装饰器的函数名需与property 的函数名相同。
+9.  继承
+     通过继承基类（父类）来得到基类的功能，所以我们把被继承的类称作父类或基类，继承者被称作子类。子类拥有父类的所有属性和方法，父类不具备子类只有的属性和方法。定义子类时，将父类传入子类参数内。子类实例化后可以调用自己与父类的函数和变量。python中可以进行多重继承，在传入子类参数时，用逗号隔开，从左往右依次继承。
+eg. class Parent(object):
+          def talk(self):
+              print('talk')
+          def think(self):
+              print('think')
+      class Child(Parent):	#Parent是被继承的父类
+          def swimming(self):
+              print('child can swimming')
+10. 类的多态
+      同一个功能的多状态化。也就是子类重写父类的方法。
+11. super函数
+      python中子类继承父类的方法而使用的关键字，当子类继承父类后，就可以使用父类的方法。
+eg. class Parent(object):
+          def _init__(self):
+              print('hello i am parent')
+      class Child(Parent):
+          def __init__(self):
+              print('hello i am child')
+              super(Child,self).__init__()
+12. 类的内置函数
+      (1) __str__：如果定义了该函数，当print当前实例化对象的时候，会返回该函数的return信息。只有 self 参数。
+      (2) __getattr__：当调用的属性或方法不存在时，会返回该方法定义的信息。
+          def __getattr__(self,key)		# key：调用任何不存在的属性名
+              print(something...)
+      (3) __setattr__：拦截当前类中不存在的属性和值。没有返回值。
+          def __setattr__(self,key,value):
+              self.__dict__[key] = value	#key 当前的属性名；value：当前的参数对应的值。
+       (4) __call__：本质是将一个类变成一个函数。可传任何参数，与函数情况相同可有可无。
+           def __call__(self,*args,**kwargs):
+               print('call will start')
+
+
+
+
+
